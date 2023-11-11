@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_height="wrap_content"
+    android:minHeight="140dp"
+    android:background="@drawable/item_sp">
+    <LinearLayout
+        android:layout_marginStart="120dp"
+        android:layout_gravity="center_vertical"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/name"
+            android:layout_gravity="center_vertical"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Name SP"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/tloai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thể Loại"
+            android:textSize="18dp"
+            />
+        <LinearLayout
+            android:layout_width="220dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/gia"
+                android:minWidth="150dp"
+                android:maxWidth="160dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Giá : 20000 VND"/>
+            <TextView
+                android:id="@+id/sl"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SL: 2"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/mota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mô Tả "/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/baseline_delete_24"
+        />
+
+
+</LinearLayout>

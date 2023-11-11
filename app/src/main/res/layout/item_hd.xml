@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+
+    android:layout_height="wrap_content"
+    android:minHeight="140dp"
+   >
+    <LinearLayout
+       android:layout_marginTop="10dp"
+        android:layout_gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:gravity="center_horizontal"
+
+            android:id="@+id/tvloaihd"
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Loại hóa đơn "
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/tvngayhd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ngày "
+            android:textSize="18dp"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="10dp"
+            android:id="@+id/SanPham_HD"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/tvtongtien"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tổng tiền "/>
+
+        <ImageView
+
+             android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:src="@drawable/baseline_delete_24"
+            />
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

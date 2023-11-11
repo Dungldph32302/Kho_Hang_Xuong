@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/QuanLy"
+        android:title="Home"
+        android:icon="@drawable/baseline_home_24"
+        >
+    </item>
+    <item
+        android:id="@+id/sach"
+        android:title="Sách"
+        android:icon="@drawable/baseline_menu_book_24"
+        >
+    </item>
+    <item
+        android:id="@+id/navThongKe"
+        android:title="Thống kê"
+        android:icon="@drawable/baseline_bar_chart_24"
+        >
+    </item>
+    <item
+        android:id="@+id/TheLoai"
+        android:title="Thể loại"
+        android:icon="@drawable/baseline_filter_none_24"
+        >
+    </item>
+</menu>

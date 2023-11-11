@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/img_2"
+    tools:context=".TaoDon_Activity" >
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_gravity="center_horizontal"
+        android:text="Tạo Hóa Đơn "
+        android:textStyle="bold"
+        android:textSize="24dp"/>
+    <RadioGroup
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+       >
+
+        <TextView
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19dp"
+            android:text="Hóa Đơn: "/>
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Xuất " />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nhập" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvThuPhong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chọn Sản phẩm: "
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"
+
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:id="@+id/taodon"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:maxHeight="100dp"
+     />
+    <TextView
+        android:layout_gravity="end"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/tvtong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tong $ "
+        android:textSize="20dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvhh"
+        android:text="hihi"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnzTao"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/button2"
+        android:text="Tạo"
+        android:textColor="@color/white"
+        android:textSize="19dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chkRemenber"
+        app:layout_constraintVertical_bias="0.443" />
+
+</LinearLayout>
