@@ -37,7 +37,7 @@ public class AdapterSanPhaminHD extends RecyclerView.Adapter<AdapterSanPhaminHD.
     public void onBindViewHolder(@NonNull ViewHoder holder, int position) {
         holder.name.setText(list.get(position).getName());
         holder.gia.setText(list.get(position).getDonGia());
-        holder.sl.setText(String.valueOf(list.get(position).getSoluong()));
+        holder.sl.setText(String.valueOf(list.get(position).getSl()));
     }
 
     @Override

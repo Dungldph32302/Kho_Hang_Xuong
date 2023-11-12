@@ -8,6 +8,7 @@ import com.example.kho_hang_xuong.R;
 
 public class intro_activity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

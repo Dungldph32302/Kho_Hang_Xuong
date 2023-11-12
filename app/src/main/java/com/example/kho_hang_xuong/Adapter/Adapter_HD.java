@@ -41,10 +41,11 @@ public class Adapter_HD extends RecyclerView.Adapter<Adapter_HD.ViewHoder>{
     @Override
     public void onBindViewHolder(@NonNull ViewHoder holder, int position) {
         if (list.get(position).getLoai_hd()==1){
-              holder.loai.setText("Hóa Đơn Nhập");
+              holder.loai.setText(String.valueOf("Hóa Đơn Nhập"+ list.get(position).getId_hd()));
         }else {
-            holder.loai.setText("Hóa Đơn Xuất");
+            holder.loai.setText(String.valueOf("Hóa Đơn xuất"+ list.get(position).getId_hd()));
         }
+        holder.tong.setText(String.valueOf(list.get(position).getTongtien()));
         holder.ngay.setText(list.get(position).getNgay());
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(holder.rcv.getContext());

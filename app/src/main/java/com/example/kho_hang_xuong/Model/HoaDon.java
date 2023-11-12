@@ -1,13 +1,26 @@
 package com.example.kho_hang_xuong.Model;
 
 public class HoaDon {
-    private int id_hd,id_hdct,id_user,loai_hd,id_sp,sl;
-    private String ngay,tongtien;
+    private int id_hd,id_hdct,id_user,loai_hd,id_sp,sl,tongtien;
+    private String ngay;
 
     public HoaDon() {
     }
 
-    public HoaDon(int id_hd, int id_hdct, int id_user, int loai_hd, int id_sp, int sl, String ngay, String tongtien) {
+    public HoaDon(int id_user, int loai_hd, int tongtien, String ngay) {
+        this.id_user = id_user;
+        this.loai_hd = loai_hd;
+        this.tongtien = tongtien;
+        this.ngay = ngay;
+    }
+
+    public HoaDon(int id_hd, int id_sp, int sl) {
+        this.id_hd = id_hd;
+        this.id_sp = id_sp;
+        this.sl = sl;
+    }
+
+    public HoaDon(int id_hd, int id_hdct, int id_user, int loai_hd, int id_sp, int sl, String ngay, int tongtien) {
         this.id_hd = id_hd;
         this.id_hdct = id_hdct;
         this.id_user = id_user;
@@ -74,11 +87,11 @@ public class HoaDon {
         this.ngay = ngay;
     }
 
-    public String getTongtien() {
+    public int getTongtien() {
         return tongtien;
     }
 
-    public void setTongtien(String tongtien) {
+    public void setTongtien(int tongtien) {
         this.tongtien = tongtien;
     }
 }

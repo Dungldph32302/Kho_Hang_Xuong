@@ -3,12 +3,14 @@ package com.example.kho_hang_xuong.Dao;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.kho_hang_xuong.DataBase.dbHelper;
+import com.example.kho_hang_xuong.Model.HoaDon;
 import com.example.kho_hang_xuong.Model.SanPham;
 
 import java.util.ArrayList;
@@ -52,10 +54,11 @@ public class SP_Dao {
         SQLiteDatabase db = dbHelpe.getReadableDatabase();
 
         try {
-            String query = "SELECT SanPham.* " +
+            String query = "SELECT SanPham.*, HoaDon_ChiTiet.so_luong " +
                     "FROM SanPham " +
                     "JOIN HoaDon_ChiTiet ON SanPham.ID_SP = HoaDon_ChiTiet.ID_SP " +
                     "WHERE HoaDon_ChiTiet.ID_HD = ?";
+
 
             Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(hoaDonID)});
 
@@ -69,6 +72,8 @@ public class SP_Dao {
                     sp.setDonGia(cursor.getString(cursor.getColumnIndex("DonGia")));
                     sp.setSoluong(cursor.getInt(cursor.getColumnIndex("SoLuong")));
                     sp.setMoTa(cursor.getString(cursor.getColumnIndex("MoTa")));
+                    int soLuong = cursor.getInt(cursor.getColumnIndex("so_luong"));
+                    sp.setSl(soLuong);
                     listSanPham.add(sp);
                     cursor.moveToNext();
                 }
@@ -82,6 +87,35 @@ public class SP_Dao {
         }
 
         return listSanPham;
+    }
+
+    @SuppressLint("Range")
+    public int getSoLuongByID(int idSP) {
+        SQLiteDatabase db = dbHelpe.getReadableDatabase();
+        int soLuong = -1;  // Giá trị mặc định nếu không tìm thấy
+
+        String query = "SELECT SoLuong FROM SanPham WHERE ID_SP = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idSP)});
+
+        if (cursor.moveToFirst()) {
+            soLuong = cursor.getInt(cursor.getColumnIndex("SoLuong"));
+        }
+
+        cursor.close();
+        db.close();
+
+        return soLuong;
+    }
+    public boolean updateSP(SanPham sp){
+        ContentValues values=new ContentValues();
+        SQLiteDatabase db=dbHelpe.getWritableDatabase();
+        values.put("ID_SP",sp.getId_sp());
+        values.put("ID_TL",sp.getId_tl());
+        values.put("NAME_SP",sp.getName());
+        values.put("SoLuong",sp.getSoluong());
+        values.put("MoTa",sp.getMoTa());
+        long row=db.update("SanPham",values,"ID_HD=?",new String[]{String.valueOf(sp.getId_sp())});
+        return (row>0);
     }
 
 }

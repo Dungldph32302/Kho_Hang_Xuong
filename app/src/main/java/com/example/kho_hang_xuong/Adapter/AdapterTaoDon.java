@@ -1,7 +1,9 @@
 package com.example.kho_hang_xuong.Adapter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +19,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.kho_hang_xuong.Dao.SP_Dao;
 import com.example.kho_hang_xuong.Model.SanPham;
 import com.example.kho_hang_xuong.R;
 
@@ -27,6 +30,7 @@ public class AdapterTaoDon extends RecyclerView.Adapter<AdapterTaoDon.Viewhoder>
    private final Context context;
    private final ArrayList<SanPham>list;
     private int tongTatCa = 0;
+    SP_Dao spDao;
     public AdapterTaoDon(Context context, ArrayList<SanPham> list) {
         this.context = context;
         this.list = list;
@@ -54,16 +58,17 @@ public class AdapterTaoDon extends RecyclerView.Adapter<AdapterTaoDon.Viewhoder>
         return tong;
     }
     // phương thức trả về id sp
-    public Integer[] getSelectedIds() {
+    public ArrayList<SanPham> getSelectedIds() {
         List<Integer> selectedIdsList = new ArrayList<>();
+        ArrayList<SanPham>list1= new ArrayList<>();
 
         for (SanPham sanPham : list) {
             if (sanPham.isSelected()) {
-                selectedIdsList.add(sanPham.getId_sp());
+                list1.add(sanPham);
             }
         }
 
-        return selectedIdsList.toArray(new Integer[0]);
+        return list1;
     }
 
 
@@ -100,6 +105,8 @@ public class AdapterTaoDon extends RecyclerView.Adapter<AdapterTaoDon.Viewhoder>
                 Drawable background = ContextCompat.getDrawable(context, R.drawable.item_sp);
 
                 if (isLnVisible) {
+                    list.get(position).setSl(1);
+                    holder.so.setText(String.valueOf(list.get(position).getSl()));
                     holder.ln.setVisibility(View.VISIBLE);
                     holder.itemView.setBackground(backgroundDrawable);
                     list.get(position).setSelected(true); // Đánh dấu item đã chọn
@@ -141,14 +148,18 @@ public class AdapterTaoDon extends RecyclerView.Adapter<AdapterTaoDon.Viewhoder>
         holder.cong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                list.get(position).setSl(list.get(position).getSl() + 1);
-                holder.so.setText(String.valueOf(list.get(position).getSl()));
-                // Thêm dòng log để kiểm tra giá trị của soLuong và tongTatCa
-                Log.d("AdapterTaoDon", "Số lượng sau khi trừ: " + list.get(position).getSl() + ", Tổng tất cả: " + getTongTatCa());
-
-                if(onQuantityChangeListener != null) {
-                    onQuantityChangeListener.onQuantityChanged();
+                spDao = new SP_Dao(context);
+                if(list.get(position).getSl()>=spDao.getSoLuongByID(list.get(position).getId_sp())){
+                    list.get(position).setSl(spDao.getSoLuongByID(list.get(position).getId_sp()));
+                    tb("","Số lượng sản phẩm vượt số lượng tồn kho hiện tại");
+                }else {
+                    list.get(position).setSl(list.get(position).getSl() + 1);
+                    holder.so.setText(String.valueOf(list.get(position).getSl()));
                 }
+                    if(onQuantityChangeListener != null) {
+                        onQuantityChangeListener.onQuantityChanged();
+                    }
+
             }
         });
 
@@ -177,5 +188,26 @@ public class AdapterTaoDon extends RecyclerView.Adapter<AdapterTaoDon.Viewhoder>
         }
     }
 
+
+    public  void tb(String title,String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+        // Thiết lập tiêu đề và nội dung của dialog
+        builder.setTitle(title);
+        builder.setMessage(message);
+
+        // Thiết lập nút "OK" và xử lý sự kiện khi nút được nhấn
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Xử lý sự kiện khi nút "OK" được nhấn
+                dialog.dismiss(); // Đóng dialog
+            }
+        });
+
+        // Tạo và hiển thị dialog
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
 
 }
