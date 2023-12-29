@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/edittext_loi"
+   android:layout_margin="5dp">
+    <ImageView
+        android:layout_marginStart="5dp"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_bill"
+        />
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        >
+
+        <TextView
+            android:id="@+id/TVloai"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hóa đơn nhập "
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/Tvng"
+            android:minWidth="150dp"
+            android:maxWidth="160dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Người tạo : Nguyễn văn a "/>
+        <TextView
+            android:id="@+id/TvNgay"
+            android:minWidth="150dp"
+            android:maxWidth="160dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20-11-2023"/>
+
+            <TextView
+                android:id="@+id/TvTong"
+                android:minWidth="150dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Tổng: 20000 VND"
+                android:textSize="17dp"
+                android:textColor="#FF0000"
+               />
+
+    </LinearLayout>
+   <ImageView
+    android:id="@+id/tvTuyChinh"
+    android:layout_gravity="center_vertical"
+    android:layout_width="50dp"
+    android:layout_height="30dp"
+    android:src="@drawable/img_3"
+    />
+</LinearLayout>

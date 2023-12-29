@@ -2,7 +2,8 @@ package com.example.kho_hang_xuong.Model;
 
 public class SanPham {
     private  int id_sp,id_tl,soluong,sl;
-    private String name,donGia,moTa;
+    private String name,moTa,anh;
+    private int dongia;
     // Trường mới để theo dõi trạng thái đã chọn
     private boolean isSelected;
 
@@ -24,13 +25,12 @@ public class SanPham {
     public SanPham() {
     }
 
-    public SanPham(int id_sp, int id_tl, int soluong, String name, String donGia, String moTa) {
-        this.id_sp = id_sp;
-        this.id_tl = id_tl;
-        this.soluong = soluong;
-        this.name = name;
-        this.donGia = donGia;
-        this.moTa = moTa;
+    public String getAnh() {
+        return anh;
+    }
+
+    public void setAnh(String anh) {
+        this.anh = anh;
     }
 
     public int getId_sp() {
@@ -65,12 +65,12 @@ public class SanPham {
         this.name = name;
     }
 
-    public String getDonGia() {
-        return donGia;
+    public int getDongia() {
+        return dongia;
     }
 
-    public void setDonGia(String donGia) {
-        this.donGia = donGia;
+    public void setDongia(int dongia) {
+        this.dongia = dongia;
     }
 
     public String getMoTa() {

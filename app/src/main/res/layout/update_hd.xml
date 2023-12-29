@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/Maid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mã hóa đơn : "
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginStart="10dp"
+        />
+    <RadioGroup
+        android:id="@+id/chkGr"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+
+
+        <TextView
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19dp"
+            android:text="Hóa Đơn: "/>
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Xuất " />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nhập" />
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ngay Tạo  : "
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtNgay"
+            android:layout_width="150dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:hint="dd/MM/yyyy"
+            android:paddingStart="15dp"
+            android:inputType="date" />
+        <ImageView
+            android:id="@+id/imgngay"
+            android:layout_gravity="center_vertical"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/img_12"
+            />
+    </LinearLayout>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tổng tiền  : "
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"
+        />
+    <EditText
+        android:id="@+id/tien"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:hint=""
+        android:layout_marginStart="10dp"
+        android:inputType="number"
+        />
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnLuu_sua"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="LƯU"
+            android:textColor="@color/black"
+           />
+
+        <Button
+            android:id="@+id/btnHuy_sua"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="HỦY"
+            android:textColor="@color/black"
+             />
+    </LinearLayout>
+
+
+</LinearLayout>

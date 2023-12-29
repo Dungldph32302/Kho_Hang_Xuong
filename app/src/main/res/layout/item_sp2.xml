@@ -1,35 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="300dp"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
-    android:layout_height="80dp"
-   android:layout_margin="5dp"
-    android:background="@drawable/item_sp">
+    android:layout_height="100dp"
+    android:layout_margin="5dp"
+   >
+
     <LinearLayout
-        android:layout_marginStart="120dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+
+    <ImageView
+        android:id="@+id/img_sp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/img_10"
+        ></ImageView>
+
+    <LinearLayout
+        android:layout_marginStart="10dp"
         android:layout_gravity="center_vertical"
-        android:layout_width="120dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
+
+
         <TextView
             android:id="@+id/TVNameSP"
             android:layout_gravity="center_vertical"
-            android:layout_width="100dp"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:text="Name SP"
             android:textSize="20dp"
             android:textStyle="bold"
             />
 
-            <TextView
-                android:id="@+id/TvGiaSP"
-                android:minWidth="150dp"
-                android:maxWidth="160dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Giá : 20000 VND"/>
+        <TextView
+            android:id="@+id/TvGiaSP"
+            android:minWidth="150dp"
+            android:maxWidth="160dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giá : 20000 VND"/>
 
     </LinearLayout>
 
@@ -38,7 +54,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:visibility="invisible"
         >
         <TextView
             android:id="@+id/tvtru"
@@ -65,6 +80,14 @@
             android:gravity="center_horizontal"
             android:text="+"
             />
-    </LinearLayout>
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/imgdelete"
+            android:layout_marginStart="20dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/img_9"
+            />
+    </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

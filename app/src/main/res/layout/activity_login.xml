@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:text="User name"
         android:textSize="19dp"
-
         app:layout_constraintBottom_toTopOf="@+id/appCompatEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.088"
@@ -80,6 +79,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnlogin"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="180dp"

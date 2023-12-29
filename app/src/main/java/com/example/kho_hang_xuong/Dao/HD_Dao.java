@@ -29,9 +29,10 @@ public class HD_Dao {
     public ArrayList<HoaDon> getAllHoaDonWithDetails() {
         ArrayList<HoaDon> hoaDonList = new ArrayList<>();
         SQLiteDatabase db = dbHelpe.getReadableDatabase();
-
         try {
-            Cursor cursor = db.rawQuery("SELECT * FROM HoaDon", null);
+            Cursor cursor = db.rawQuery("SELECT HoaDon.*, User.FullName " +
+                    "FROM HoaDon " +
+                    "INNER JOIN User ON HoaDon.ID_User = User.ID_Use", null);
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 while (!cursor.isAfterLast()) {
@@ -43,7 +44,8 @@ public class HD_Dao {
                     hoaDon.setNgay(cursor.getString(cursor.getColumnIndex("Ngay")));
                     hoaDon.setLoai_hd(cursor.getInt(cursor.getColumnIndex("LoaiHoaDon")));
                     hoaDon.setTongtien(cursor.getInt(cursor.getColumnIndex("TongTien")));
-                    // Set thông tin từ bảng HoaDon_ChiTiet
+                    // Set tên đầy đủ từ bảng User
+                    hoaDon.setFullName(cursor.getString(cursor.getColumnIndex("FullName")));
 
                     hoaDonList.add(hoaDon);
                     cursor.moveToNext();
@@ -58,9 +60,38 @@ public class HD_Dao {
         return hoaDonList;
     }
 
+
+    @SuppressLint("Range")
+    public String getfullnamebyid(int idUser) {
+        String fullName = "";
+        SQLiteDatabase db = dbHelpe.getReadableDatabase();
+
+        try {
+            String query = "SELECT FullName FROM User WHERE ID_Use = ?";
+            String[] selectionArgs = {String.valueOf(idUser)};
+            Cursor cursor = db.rawQuery(query, selectionArgs);
+
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                fullName = cursor.getString(cursor.getColumnIndex("FullName"));
+            }
+        } catch (Exception e) {
+            Log.i(TAG, "Lỗi getFullNameByIdUser", e);
+        } finally {
+            db.close();
+        }
+
+        return fullName;
+    }
+
     public boolean deleteHD(int id){
         SQLiteDatabase db= dbHelpe.getWritableDatabase();
         long row=db.delete("HoaDon","ID_HD=?",new String[]{String.valueOf(id)});
+        return  (row>0);
+    }
+    public boolean deleteHDct(int id){
+        SQLiteDatabase db= dbHelpe.getWritableDatabase();
+        long row=db.delete("HoaDon_ChiTiet","ID_HD=?",new String[]{String.valueOf(id)});
         return  (row>0);
     }
     public boolean updateHD(HoaDon sp){
@@ -170,5 +201,42 @@ public class HD_Dao {
 
         return false;
     }
+
+    @SuppressLint("Range")
+    public ArrayList<HoaDon> getAllHoaDonByLoai(int loaiHoaDon) {
+        ArrayList<HoaDon> hoaDonList = new ArrayList<>();
+        SQLiteDatabase db = dbHelpe.getReadableDatabase();
+        try {
+            // Sử dụng câu truy vấn SQL với điều kiện LoaiHoaDon và INNER JOIN bảng User
+            Cursor cursor = db.rawQuery("SELECT HoaDon.*, User.FullName FROM HoaDon INNER JOIN User ON HoaDon.ID_User = User.ID_Use WHERE HoaDon.LoaiHoaDon = ?", new String[]{String.valueOf(loaiHoaDon)});
+
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                while (!cursor.isAfterLast()) {
+                    HoaDon hoaDon = new HoaDon();
+
+                    // Set thông tin từ bảng HoaDon
+                    hoaDon.setId_hd(cursor.getInt(cursor.getColumnIndex("ID_HD")));
+                    hoaDon.setId_user(cursor.getInt(cursor.getColumnIndex("ID_User")));
+                    hoaDon.setNgay(cursor.getString(cursor.getColumnIndex("Ngay")));
+                    hoaDon.setLoai_hd(cursor.getInt(cursor.getColumnIndex("LoaiHoaDon")));
+                    hoaDon.setTongtien(cursor.getInt(cursor.getColumnIndex("TongTien")));
+
+                    // Set thông tin FullName từ bảng User
+                    hoaDon.setFullName(cursor.getString(cursor.getColumnIndex("FullName")));
+
+                    hoaDonList.add(hoaDon);
+                    cursor.moveToNext();
+                }
+            }
+        } catch (Exception e) {
+            Log.i(TAG, "Lỗi getAllHoaDonByLoai", e);
+        } finally {
+            db.close();
+        }
+
+        return hoaDonList;
+    }
+
 
 }

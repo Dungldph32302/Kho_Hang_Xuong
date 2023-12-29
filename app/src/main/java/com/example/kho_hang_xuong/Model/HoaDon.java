@@ -1,8 +1,11 @@
 package com.example.kho_hang_xuong.Model;
 
-public class HoaDon {
+import java.io.Serializable;
+
+public class HoaDon implements Serializable {
     private int id_hd,id_hdct,id_user,loai_hd,id_sp,sl,tongtien;
     private String ngay;
+    private String fullName;
 
     public HoaDon() {
     }
@@ -93,5 +96,13 @@ public class HoaDon {
 
     public void setTongtien(int tongtien) {
         this.tongtien = tongtien;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getFullName() {
+        return fullName;
     }
 }

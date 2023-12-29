@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/img_2"
     tools:context=".TaoDon_Activity" >
 
     <TextView
@@ -24,6 +23,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
        >
+
+
 
         <TextView
             android:layout_marginStart="10dp"
@@ -45,44 +46,68 @@
     </RadioGroup>
 
     <TextView
+        android:id="@+id/hh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ngày : "
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtNgay"
+            android:layout_width="150dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:hint="dd/MM/yyyy"
+            android:paddingStart="15dp"
+            android:inputType="date" />
+        <ImageView
+            android:id="@+id/imgngay"
+            android:layout_gravity="center_vertical"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/img_12"
+            />
+    </LinearLayout>
+
+
+    <TextView
         android:id="@+id/tvThuPhong"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Chọn Sản phẩm: "
         android:textStyle="bold"
         android:layout_marginStart="10dp"
-
         />
+
+    <Spinner
+        android:id="@+id/spinnerSP"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        >
+    </Spinner>
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         android:id="@+id/taodon"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:maxHeight="100dp"
-     />
-    <TextView
-        android:layout_gravity="end"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/tvtong"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tong $ "
-        android:textSize="20dp"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvhh"
-        android:text="hihi"/>
+        android:layout_height="340dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:maxHeight="100dp" />
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnzTao"
-        android:layout_gravity="center_horizontal"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal"
         android:background="@drawable/button2"
         android:text="Tạo"
         android:textColor="@color/white"

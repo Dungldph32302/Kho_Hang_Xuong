@@ -35,9 +35,10 @@ public class SP_Dao {
                     sp.setId_sp(cursor.getInt(0));
                     sp.setId_tl(cursor.getInt(1));
                     sp.setName(cursor.getString(2));
-                    sp.setDonGia(cursor.getString(3));
+                    sp.setDongia(cursor.getInt(3));
                     sp.setSoluong(cursor.getInt(4));
                     sp.setMoTa(cursor.getString(5));
+                    sp.setAnh(cursor.getString(6));
                     list.add(sp);
                     cursor.moveToNext();
                 }
@@ -59,7 +60,6 @@ public class SP_Dao {
                     "JOIN HoaDon_ChiTiet ON SanPham.ID_SP = HoaDon_ChiTiet.ID_SP " +
                     "WHERE HoaDon_ChiTiet.ID_HD = ?";
 
-
             Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(hoaDonID)});
 
             if (cursor.getCount() > 0) {
@@ -69,25 +69,29 @@ public class SP_Dao {
                     sp.setId_sp(cursor.getInt(cursor.getColumnIndex("ID_SP")));
                     sp.setId_tl(cursor.getInt(cursor.getColumnIndex("ID_TL")));
                     sp.setName(cursor.getString(cursor.getColumnIndex("NAME_SP")));
-                    sp.setDonGia(cursor.getString(cursor.getColumnIndex("DonGia")));
+                    sp.setDongia(cursor.getInt(cursor.getColumnIndex("DonGia")));
                     sp.setSoluong(cursor.getInt(cursor.getColumnIndex("SoLuong")));
                     sp.setMoTa(cursor.getString(cursor.getColumnIndex("MoTa")));
+                    sp.setAnh(cursor.getString(cursor.getColumnIndex("anh")));
                     int soLuong = cursor.getInt(cursor.getColumnIndex("so_luong"));
+
                     sp.setSl(soLuong);
                     listSanPham.add(sp);
                     cursor.moveToNext();
                 }
             }
+            cursor.close();  // Đóng cursor khi đã sử dụng xong
 
-            cursor.close();
         } catch (Exception e) {
-            Log.i(TAG, "Lỗi getSanPhamByHoaDonID", e);
+            // Xử lý ngoại lệ nếu có
+            e.printStackTrace();
         } finally {
-            db.close();
+            db.close();  // Đóng cơ sở dữ liệu
         }
 
         return listSanPham;
     }
+
 
     @SuppressLint("Range")
     public int getSoLuongByID(int idSP) {
@@ -106,6 +110,38 @@ public class SP_Dao {
 
         return soLuong;
     }
+    public SanPham getSanPhamById(int id_sp) {
+        SanPham sp = null;
+        SQLiteDatabase db = dbHelpe.getReadableDatabase();
+
+        try {
+            // Sử dụng truy vấn SQL với điều kiện WHERE để lấy sản phẩm với id_sp cụ thể
+            Cursor cursor = db.rawQuery("SELECT * FROM SanPham WHERE ID_SP = ?", new String[]{String.valueOf(id_sp)});
+
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                sp = new SanPham();
+                sp.setId_sp(cursor.getInt(0));
+                sp.setId_tl(cursor.getInt(1));
+                sp.setName(cursor.getString(2));
+                sp.setDongia(cursor.getInt(3));
+                sp.setSoluong(cursor.getInt(4));
+                sp.setMoTa(cursor.getString(5));
+                sp.setAnh(cursor.getString(6));
+            }
+
+            cursor.close(); // Đóng con trỏ sau khi sử dụng
+
+        } catch (Exception e) {
+            Log.i(TAG, "Lỗi getSanPhamById", e);
+        } finally {
+            db.close(); // Đóng cơ sở dữ liệu sau khi sử dụng
+        }
+
+        return sp;
+    }
+
+
     public boolean updateSP(SanPham sp){
         ContentValues values=new ContentValues();
         SQLiteDatabase db=dbHelpe.getWritableDatabase();
@@ -114,8 +150,66 @@ public class SP_Dao {
         values.put("NAME_SP",sp.getName());
         values.put("SoLuong",sp.getSoluong());
         values.put("MoTa",sp.getMoTa());
-        long row=db.update("SanPham",values,"ID_HD=?",new String[]{String.valueOf(sp.getId_sp())});
+        values.put("anh",sp.getAnh());
+        long row=db.update("SanPham",values,"ID_SP=?",new String[]{String.valueOf(sp.getId_sp())});
         return (row>0);
     }
+    public boolean addSP(SanPham sp){
+        ContentValues values=new ContentValues();
+        SQLiteDatabase db=dbHelpe.getWritableDatabase();
+        values.put("ID_TL",sp.getId_tl());
+        values.put("NAME_SP",sp.getName());
+        values.put("SoLuong",sp.getSoluong());
+        values.put("MoTa",sp.getMoTa());
+        values.put("DonGia",sp.getDongia());
+        values.put("anh",sp.getAnh());
+        long row=db.insert("SanPham",null,values);
+        return (row>0);
+    }
+
+    public boolean deleteSP(int id){
+        SQLiteDatabase db= dbHelpe.getWritableDatabase();
+        long row=db.delete("SanPham","ID_SP=?",new String[]{String.valueOf(id)});
+        return  (row>0);
+    }
+
+    // cập nhật số lượng
+    public boolean updateSoLuong(int productId, int newQuantity) {
+        ContentValues values = new ContentValues();
+        SQLiteDatabase db = dbHelpe.getWritableDatabase();
+
+        values.put("SoLuong", newQuantity);
+
+        String whereClause = "ID_SP=?";
+        String[] whereArgs = {String.valueOf(productId)};
+
+        long row = db.update("SanPham", values, whereClause, whereArgs);
+        db.close();
+
+        return row > 0;
+    }
+
+    @SuppressLint("Range")
+    public int getSoLuongSP(int productId) {
+        int quantity = 0;
+        SQLiteDatabase db = dbHelpe.getReadableDatabase();
+
+        String[] projection = {"SoLuong"};
+        String selection = "ID_SP=?";
+        String[] selectionArgs = {String.valueOf(productId)};
+
+        Cursor cursor = db.query("SanPham", projection, selection, selectionArgs, null, null, null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            quantity = cursor.getInt(cursor.getColumnIndex("SoLuong"));
+            cursor.close();
+        }
+
+        db.close();
+
+        return quantity;
+    }
+
+
 
 }

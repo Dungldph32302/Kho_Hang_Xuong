@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.Login.FragmentTK">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_doanhthu" />
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/khung_ln"
+            android:gravity="center_vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lưu lượng  xuất/nhập:  "
+                android:textColor="#000000"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/txtXuatnhap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="#EA0505"
+                android:textStyle="bold"/>
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/khung_ln"
+            android:gravity="center_vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Tiền hàng tồn kho :  "
+                android:textColor="#000000"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/txttienTon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="#EA0505"
+                android:textStyle="bold"/>
+
+
+
+
+        </LinearLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:layout_marginTop="20dp"
+            android:id="@+id/tabLayouthd"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            tools:ignore="MissingConstraints" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textSize="20dp"
+                android:text="Hóa đơn nhập : "
+                />
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:id="@+id/tv2"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textSize="20dp"
+                android:text="Hóa đơn Xuất : "
+                />
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:textSize="18dp"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Doanh thu "
+            android:textStyle="bold"
+            ></TextView>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtNgaybatdau"
+                android:layout_width="150dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:hint="Từ ngày "
+                android:paddingStart="15dp"
+                android:inputType="date" />
+            <ImageView
+                android:id="@+id/imgngaybatdau"
+                android:layout_gravity="center_vertical"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/img_12"
+                />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtngay"
+                android:layout_width="150dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:hint="Đến ngày "
+                android:paddingStart="15dp"
+                android:inputType="date" />
+            <ImageView
+                android:id="@+id/imgngay"
+                android:layout_gravity="center_vertical"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/img_12"
+                />
+        </LinearLayout>
+        <Button
+            android:id="@+id/btnThongKe"
+            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thống kê"
+            ></Button>
+        <TextView
+            android:id="@+id/tv3"
+            android:layout_marginStart="10dp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="20dp"
+            android:text="Doanh thu xuat: "
+            />
+        <TextView
+            android:id="@+id/tv4"
+            android:layout_marginStart="10dp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="20dp"
+            android:text="Doanh thu nhập  : "
+            />
+        <TextView
+            android:id="@+id/tv5"
+            android:layout_marginStart="10dp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="20dp"
+            android:text="Lợi nhuận "
+            />
+
+
+        <TextView
+            android:textSize="18dp"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Top sản phẩm xuất nhiều nhất "
+            android:textStyle="bold"
+            ></TextView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvTOp"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            >
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+
+
+</ScrollView>

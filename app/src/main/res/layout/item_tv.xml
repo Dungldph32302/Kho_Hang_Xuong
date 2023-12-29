@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:layout_margin="5dp"
+    android:background="@drawable/thongb"
+    >
+    <ImageView
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="10dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@drawable/img_6"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_marginStart="40dp"
+            android:id="@+id/TVname"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hóa đơn nhập "
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="40dp"
+            android:id="@+id/TVsdt"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0345678987"
+            android:textSize="19dp"
+            />
+    </LinearLayout>
+
+</LinearLayout>

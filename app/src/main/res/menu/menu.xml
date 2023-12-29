@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/home"
-        android:title="Home"
-        android:icon="@drawable/baseline_home_24"
-        >
-    </item>
-    <item
         android:id="@+id/hoaDon"
         android:title="Hóa Đơn "
         android:icon="@drawable/baseline_post_add_24"
@@ -16,7 +10,7 @@
     <item
         android:id="@+id/sanPham"
         android:title="Sản phẩm "
-        android:icon="@drawable/baseline_production_quantity_limits_24"
+        android:icon="@drawable/img_10"
 
         >
     </item>
@@ -28,8 +22,8 @@
     </item>
     <item
         android:id="@+id/thongtin"
-        android:title="Accout"
-        android:icon="@drawable/baseline_person_24"
+        android:title="Thống kê "
+        android:icon="@drawable/img_11"
         >
     </item>
 </menu>

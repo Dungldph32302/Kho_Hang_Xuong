@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:id="@+id/appCompatButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/back"
+     />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_marginStart="5dp"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_bill"
+            />
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:id="@+id/TVloai"
+                android:layout_gravity="center_vertical"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Hóa đơn nhập "
+                android:textSize="20dp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/Tvng"
+                android:minWidth="150dp"
+                android:maxWidth="160dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Người tạo : Nguyễn văn a "/>
+            <TextView
+                android:id="@+id/TvNgay"
+                android:minWidth="150dp"
+                android:maxWidth="160dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20-11-2023"/>
+
+            <TextView
+                android:id="@+id/TvTong"
+                android:minWidth="150dp"
+                android:maxWidth="160dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tổng: 20000 VND"/>
+
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:layout_gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Danh sách sản phẩm"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_margin="10dp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_margin="15dp"
+        android:id="@+id/rcvHd_chitiet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</LinearLayout>

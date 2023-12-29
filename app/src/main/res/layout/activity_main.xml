@@ -22,7 +22,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="#9E896A"
+                android:background="#288f9e"
                 app:title="Quản lý kho hàng "
                 android:theme="@style/ThemeOverlay.AppCompat.Light"
               >
